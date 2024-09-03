@@ -16,10 +16,14 @@ fl = st.file_uploader(":file_folder: Upload a file", type=(["csv", "txt", "xlsx"
 if fl is not None:
     filename = fl.name
     st.write(filename)
-    df = pd.read_csv(fl, encoding="ISO-8859-1") 
+    df = pd.read_csv(fl, encoding="ISO-8859-1")
 else:
-    os.chdir(r"C:\Users\Izzah Alia\Documents\App develop\InteractiveDashboard")
-    df = pd.read_csv("Superstore.csv", encoding="ISO-8859-1")
+    # URL to raw CSV file in your GitHub repo
+    url = "https://raw.githubusercontent.com/oishylea/InteractiveDashboard/main/Superstore.csv"
+    df = pd.read_csv(url, encoding="ISO-8859-1")
+#else:
+#    os.chdir(r"C:\Users\Izzah Alia\Documents\App develop\InteractiveDashboard")
+#    df = pd.read_csv("Superstore.csv", encoding="ISO-8859-1")
 
 # New columns
 col1, col2 = st.columns(2)  
