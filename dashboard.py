@@ -37,3 +37,22 @@ with col2:
 
 # Filter the DataFrame based on the selected date range
 df = df[(df["Order Date"] >= pd.to_datetime(date1)) & (df["Order Date"] <= pd.to_datetime(date2))].copy()
+
+# Side bar
+
+# Region
+st.sidebar.header("Choose filter:")
+region = st.sidebar.multiselect("Pick your Region", df["Region"].unique())
+
+if not region:
+    df2 = df.copy()
+else:
+    df2 = df[df["Region"].isin(region)]
+
+# Create for state
+
+state = st.sidebar.multiselect("Pick your state", df["State"].unique())
+if not state:
+    df3 = df2.copy()
+else:
+    df3 = df2[df2["State"].isin(state)]
